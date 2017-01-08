@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
     <head>
@@ -14,7 +13,16 @@
     <body onload="initialize()">
         <h1>Test af touch</h1>
         <div id="coordinates"></div>
-        <div id="touchzone"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-    
+        <canvas id="myCanvas" width="350" height="400" style="border: 1px solid #ccc">
+            Canvas understøttes ikke af browseren. Prøv en anden browser.
+        </canvas>
+        <button type="button" onclick="changeColor(getColor().black)">black</button>
+        <button type="button" onclick="changeColor(getColor().grey)">grey</button>
+        <button type="button" onclick="changeColor(getColor().red)">red</button>
+        <button type="button" onclick="changeColor(getColor().blue)">blue</button>
+        <button type="button" onclick="changeColor(getColor().yellow)">yellow</button>
+        <button type="button" onclick="changeColor(getColor().green)">green</button>
+        <button type="button" onclick="clearCanvas()">clear</button>
+
     </body>
 </html>
