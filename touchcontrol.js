@@ -12,8 +12,8 @@ function initialize(){
     canvas.addEventListener("touchend", end, false);
     
     var buttonDivHeight = document.getElementById("buttonDiv").offsetHeight;
-     ctx.canvas.width  = window.innerWidth;
-     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight - 10;
+     ctx.canvas.width  = window.innerWidth - getOffset(canvas).left;
+     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight;
     
     console.log("windowInnerHeight: " + window.innerHeight);
     console.log("canvasOffsetTop: " + getOffset(canvas).top);
