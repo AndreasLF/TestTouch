@@ -1,0 +1,44 @@
+#buttondiv {
+    width: 100%;
+}
+
+.button{
+    color: white;
+    border:none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10%;
+    margin-bottom: 3px;
+    width: 13.4%;
+}
+
+#button-black {
+    background-color: #212121; 
+}
+
+#button-grey {
+    background-color: #9e9e9e; 
+}
+
+#button-red {
+    background-color: #f44336; 
+}
+
+#button-blue {
+    background-color: #2196f3; 
+}
+#button-yellow {
+    background-color: #ffeb3b; 
+}
+#button-green {
+    background-color: #4caf50; 
+}
+
+#button-clear {
+    background-color: white;
+    color: black;
+    border: 2px solid #e0e0e0;
+}

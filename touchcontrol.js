@@ -4,21 +4,30 @@ var lastPoint = null;
 var color = 'black';
 
 function initialize(){
-    canvas = document.getElementById("myCanvas");
+    addEventListener("deviceready", onDeviceReady, false);  
+    
+    canvas = document.getElementById("myCanvas");    
     ctx = canvas.getContext("2d");
     canvas.addEventListener("touchmove", draw, false);
-    canvas.addEventListener("touchmove", touchHandler, false);
     canvas.addEventListener("touchend", end, false);
     
+    var buttonDivHeight = document.getElementById("buttonDiv").offsetHeight;
+     ctx.canvas.width  = window.innerWidth;
+     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight - 10;
     
+    console.log("windowInnerHeight: " + window.innerHeight);
+    console.log("canvasOffsetTop: " + getOffset(canvas).top);
+    console.log( "buttonDivHeight: " + buttonDivHeight);
+    console.log("canvasHeight: " + document.getElementById("myCanvas").offsetHeight);
     
 }
 
-function touchHandler(event) {
-    var x = event.touches[0].pageX;
-    var y = event.touches[0].pageY;
-    var coor = "x: " + x + "  y: " + y;
-    document.getElementById("coordinates").innerHTML=coor;
+function onDeviceReady() {
+    vibrate();
+}
+
+function vibrate() {
+    navigator.vibrate(1000);
 }
 
 function draw(event) {
@@ -29,6 +38,7 @@ function draw(event) {
     
     
     console.log("offsetTop: " + offsetTop + " offsetLeft: " + offsetLeft); //This prints the offset to the console log, which is useful for debugging 
+
     
     if (lastPoint!=null) { //If the value of lastPoint is null, this code will execute
     ctx.beginPath(); //This begins a new path
@@ -53,7 +63,7 @@ function getOffset(element) {
 }
 
 function getColor() {
-    return {black:'black', grey:'grey', red:'red', blue:'blue', yellow:'yellow', green:'green'};
+    return {black:'#212121', grey:'#9e9e9e', red:'#f44336', blue:'#2196f3', yellow:'#ffeb3b', green:'#4caf50'};
 }
 
 function changeColor(c) {
@@ -62,4 +72,5 @@ function changeColor(c) {
 
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    vibrate();
 }

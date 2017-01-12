@@ -4,26 +4,32 @@
     <head>
         <title>Test af touch</title>
         <meta charset="UTF-8"/>
-        <meta name="viewpoert" content="width=device-width, initial-scale=1"/>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <!--Import cordova.js-->
         <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <!--Import touchcontrol.js-->
         <script type="text/javascript" src="touchcontrol.js"></script>
     </head>
 
     <body onload="initialize()">
-        <h1>Test af touch</h1>
-        <canvas id="myCanvas" width="350" height="400" style="border: 1px solid #ccc">
+        
+        <canvas id="myCanvas" width="100%" height="100%" style="border: 1px solid #ccc">
             Canvas understøttes ikke af browseren. Prøv en anden browser.
         </canvas>
-        <button type="button" onclick="changeColor(getColor().black)">black</button>
-        <button type="button" onclick="changeColor(getColor().grey)">grey</button>
-        <button type="button" onclick="changeColor(getColor().red)">red</button>
-        <button type="button" onclick="changeColor(getColor().blue)">blue</button>
-        <button type="button" onclick="changeColor(getColor().yellow)">yellow</button>
-        <button type="button" onclick="changeColor(getColor().green)">green</button>
-        <button type="button" onclick="clearCanvas()">clear</button>
+        
+        <div id="buttonDiv">
+            <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
+            <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
+            <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
+            <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
+            <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
+            <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>
+            <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>
+        </div>
         <br>
-        <div id="coordinates"></div>
+        
+<!--        <div id="coordinates"></div>-->
 
 
     </body>
