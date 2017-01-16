@@ -12,8 +12,8 @@ function initialize(){
     canvas.addEventListener("touchend", end, false);
     
     var buttonDivHeight = document.getElementById("buttonDiv").offsetHeight;
-     ctx.canvas.width  = window.innerWidth - getOffset(canvas).left;
-     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight;
+//     ctx.canvas.width  = window.innerWidth - getOffset(canvas).left;
+//     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight;
     
     console.log("windowInnerHeight: " + window.innerHeight);
     console.log("canvasOffsetTop: " + getOffset(canvas).top);
@@ -45,6 +45,8 @@ function draw(event) {
     ctx.moveTo(lastPoint.x, lastPoint.y); //tells which point is the beginning beginning of the line
     ctx.lineTo(event.touches[0].pageX - offsetLeft, event.touches[0].pageY - offsetTop); //tells which point the line should be drawn to
     ctx.strokeStyle = color;
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 5;
     ctx.stroke(); //this draws the line
     }
     
@@ -71,6 +73,9 @@ function changeColor(c) {
 }
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     vibrate();
+    
+    if (confirm("Are you sure") == true) {
+       ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    } 
 }
