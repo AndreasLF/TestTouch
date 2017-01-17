@@ -1,35 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
 
     <head>
         <title>Test af touch</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--Imports my stylesheet-->
         <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+        <!--Imports the Google material icon font stylesheet-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+        <!--Imports the Google Roboto font-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <!--Import cordova.js-->
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <!--Import touchcontrol.js-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <!--Imports my javascript document touchcontrol.js -->
         <script type="text/javascript" src="touchcontrol.js"></script>
     </head>
 
-    <body onload="initialize()">
+    <body id="body" onload="initialize()">
+        <div id="titleBar">
+            <div  onclick="openNav()" id="menuButton"><i class="material-icons" class="material-icons" style="font-size:36px;color:white;">menu</i></div>
+        </div>
+        <div id="sideNav">
+                <i onclick="openNav()" class="material-icons" class="material-icons" style="font-size:36px;color:white;">close</i>
+                <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
+                <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
+                <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
+                <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
+                <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
+                <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>  
+                <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>
+                <br>
+                <div class="pen-size-div">Pen width</div>
+            
+            <ul id="penSizeList">
+                <li><button type="button" onclick="setPenSize('decrease')" class="button-pencil-size"><i class="material-icons" class="material-icons" style="font-size:15px;color:#FFFFFF;">arrow_downward</i></button></li>
+                <li><div id="penSizeDiv" class="pen-size-div">1</div></li>
+                <li><button type="button" onclick="setPenSize('increase')" class="button-pencil-size"><i class="material-icons" class="material-icons" style="font-size:15px;color:#FFFFFF;">arrow_upward</i></button></li>
+            </ul>
+                
+        </div>
         
-        <canvas id="myCanvas" width="260" height="375" style="border: 1px solid #ccc">
+        <canvas id="myCanvas" width="260" height="375">
             Canvas understøttes ikke af browseren. Prøv en anden browser.
         </canvas>
         
-        <div id="buttonDiv">
-            <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
-<!--            <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>-->
-            <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
-            <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
-            <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
-            <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>
-            <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>
-        </div>
-        <br>
         
-<!--        <div id="coordinates"></div>-->
+<!--
+        <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
+        <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
+        <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
+        <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
+        <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
+        <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>  
+        <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>
+-->
 
 
     </body>

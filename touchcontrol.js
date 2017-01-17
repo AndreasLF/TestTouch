@@ -2,52 +2,51 @@ var canvas;
 var ctx;
 var lastPoint = null;
 var color = 'black';
+var sideNavOpen = false;
+var penSize = 1;
 
 function initialize(){
-    addEventListener("deviceready", onDeviceReady, false);  
+    addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
+    window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
     
-    canvas = document.getElementById("myCanvas");    
-    ctx = canvas.getContext("2d");
-    canvas.addEventListener("touchmove", draw, false);
-    canvas.addEventListener("touchend", end, false);
+    canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
+    ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
+    canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
+    canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    var buttonDivHeight = document.getElementById("buttonDiv").offsetHeight;
-//     ctx.canvas.width  = window.innerWidth - getOffset(canvas).left;
-//     ctx.canvas.height = window.innerHeight - getOffset(canvas).top - buttonDivHeight;
-    
-    console.log("windowInnerHeight: " + window.innerHeight);
-    console.log("canvasOffsetTop: " + getOffset(canvas).top);
-    console.log( "buttonDivHeight: " + buttonDivHeight);
-    console.log("canvasHeight: " + document.getElementById("myCanvas").offsetHeight);
-    
+    canvasResize();
 }
 
-function onDeviceReady() {
-    vibrate();
+function canvasResize(){
+                canvas.width  = window.innerWidth;
+                canvas.height = window.innerHeight - getOffset(canvas).top;
+}
+
+function onDeviceReady() { 
+    vibrate(); //The function vibrate is called
 }
 
 function vibrate() {
-    navigator.vibrate(1000);
+    navigator.vibrate(1000); //Makes the phone vibrate for 1000 milliseconds
 }
+ 
 
-function draw(event) {
+function touchMove(event) {
+    var offsetTop = getOffset(canvas).top; //stores the offsetTop of the canvas
+    var offsetLeft = getOffset(canvas).left; //stores the offsetLeft of the canvas
     
-    var canvasElement = document.getElementById("myCanvas"); //stores the canvas element in a variable
-    var offsetTop = getOffset(canvasElement).top; //stores the offsetTop of the canvas
-    var offsetLeft = getOffset(canvasElement).left; //stores the offsetLeft of the canvas
-    
-    
-    console.log("offsetTop: " + offsetTop + " offsetLeft: " + offsetLeft); //This prints the offset to the console log, which is useful for debugging 
+    console.log("offsetTop: " + offsetTop + " offsetLeft: " + offsetLeft); //FOR DEBUGGING - This prints the offset to the console log
 
     
     if (lastPoint!=null) { //If the value of lastPoint is null, this code will execute
-    ctx.beginPath(); //This begins a new path
-    ctx.moveTo(lastPoint.x, lastPoint.y); //tells which point is the beginning beginning of the line
-    ctx.lineTo(event.touches[0].pageX - offsetLeft, event.touches[0].pageY - offsetTop); //tells which point the line should be drawn to
-    ctx.strokeStyle = color;
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 5;
-    ctx.stroke(); //this draws the line
+        ctx.beginPath(); //This begins a new path
+        ctx.moveTo(lastPoint.x, lastPoint.y); //tells which point is the beginning beginning of the line
+        ctx.lineTo(event.touches[0].pageX - offsetLeft, event.touches[0].pageY - offsetTop); //tells which point the line should be drawn to
+        ctx.strokeStyle = color; //sets the color of the line
+        ctx.lineCap = "round"; //set the lineCap to round so the cap (or end) of the line is round
+        ctx.lineJoin = "round"; //rounds the corners when to lines are connected
+        ctx.lineWidth = penSize; //sets the lineWidth
+        ctx.stroke(); //this draws the line
     }
     
     
@@ -55,13 +54,25 @@ function draw(event) {
 }
 
 
-function end(event) {
+function touchEnd(event) {
     event.preventDefault(); //preventDefault cancels an event
-    lastPoint = null; //sets the lastPoint to null. This will prevent it from connecting the lines if i draw a new line
+    lastPoint = null; //sets the lastPoint to null. This will prevent it from connecting the lines if a new line is drawn
 }
 
 function getOffset(element) {
     return {left: element.offsetLeft, top: element.offsetTop} //an object with the poperties for left and right offset is returned 
+}
+
+function openNav() {
+    
+    if (sideNavOpen == false) {
+        document.getElementById("sideNav").style.width = "140px";
+        sideNavOpen = true;
+    }
+    else {
+        document.getElementById("sideNav").style.width = "0px";
+        sideNavOpen = false;
+    }
 }
 
 function getColor() {
@@ -70,12 +81,25 @@ function getColor() {
 
 function changeColor(c) {
     color = c; 
+    openNav();
 }
 
 function clearCanvas() {
-    vibrate();
     
     if (confirm("Are you sure") == true) {
-       ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        vibrate();
     } 
+    openNav();
+}
+
+function setPenSize(n){
+    if (n == 'increase') {
+        penSize++;
+    }
+    else if (n == 'decrease') {
+        if(penSize>1) {penSize--};
+    }
+    
+    document.getElementById("penSizeDiv").innerHTML=penSize;
 }

@@ -1,15 +1,28 @@
-body {
+html, body, #myCanvas {
     margin: 0;
     padding: 0;
 }
 
-#myCanvas {
-    margin: 0; 
-    padding: 0;
+#titleBar {
+    height: 40px;
+    background-color: #0288D1;
 }
 
-#buttondiv {
-    width: 100%;
+#sideNav {
+    height: 100%; /* height is 100% */
+    width: 0; /* with is 0 as default. It later gets changed in javaScript*/
+    position: fixed; /*Position is fixed. It stays in the same place */
+    z-index: 1; /* Sets the z-index to one, which makes it sit on top */
+    top: 0; /*the distance from the top is 0*/
+    left: 0; /*the distance from the left is 0*/
+    background-color: #03A9F4; /*Background color is grey with an opacity of 0.5*/
+    overflow-x: hidden; /* This disables the horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#menuButton {
+    width:36px;
+    height: 36px;
 }
 
 .button{
@@ -18,11 +31,45 @@ body {
     padding: 8px 16px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-    border-radius: 10%;
-    margin-bottom: 3px;
-    width: 13%;
+    display: block;
+    font-size: 14sp;
+    margin: 3px 5px 3px 5px;
+    width: 90%;
+    font-family: roboto; 
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.button-pencil-size{
+    color:#FFFFFF;
+    border:none;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    background-color: #607D8B; 
+    border-radius:30px;
+}
+
+#penSizeList{
+    margin: 2px 2px 2px 8px;
+    padding: 0;
+    width:100%;
+    
+}
+
+#penSizeList li{
+    list-style-type: none;
+    float: left;
+    display: block;
+    width: 32%;
+}
+
+.pen-size-div{ 
+    text-align: center;
+    color: white;
+    font-family: roboto;
+    font-size: 14sp;
 }
 
 #button-black {
