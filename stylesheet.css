@@ -1,6 +1,7 @@
-html, body, #myCanvas {
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
-    padding: 0;
 }
 
 #titleBar {
@@ -15,14 +16,34 @@ html, body, #myCanvas {
     z-index: 1; /* Sets the z-index to one, which makes it sit on top */
     top: 0; /*the distance from the top is 0*/
     left: 0; /*the distance from the left is 0*/
-    background-color: #03A9F4; /*Background color is grey with an opacity of 0.5*/
+    background-color: #2196F3; /*Background color is grey with an opacity of 0.5*/
     overflow-x: hidden; /* This disables the horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    transition: 0.5s;  /*0.5 second transition effect to slide in the sidenav */
 }
+
+#dropdownMenu{
+    visibility: hidden;
+    background-color: #ffffff;
+    position: fixed; /*Position is fixed. It stays in the same place */
+    z-index: 1; /* Sets the z-index to one, which makes it sit on top */
+    width: 100px;
+    height: 0px;
+    right: 0;
+}
+
+
 
 #menuButton {
     width:36px;
     height: 36px;
+}
+
+#moreOptions {
+    width:36px;
+    height: 36px;
+    top: 0;
+    right:0;
+    position: fixed;
 }
 
 .button{
@@ -38,6 +59,12 @@ html, body, #myCanvas {
     font-family: roboto; 
     text-transform: uppercase;
     border-radius: 10px;
+}
+
+.dropdown-button {
+    border-radius:0;
+    background-color: #607D8B;
+    
 }
 
 .button-pencil-size{

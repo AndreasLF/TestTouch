@@ -20,6 +20,7 @@
     <body id="body" onload="initialize()">
         <div id="titleBar">
             <div  onclick="openNav()" id="menuButton"><i class="material-icons" class="material-icons" style="font-size:36px;color:white;">menu</i></div>
+            <div onclick="openMoreOptions()" id="moreOptions"><i class="material-icons" class="material-icons" style="font-size:36px;color:white;">more_vert</i></div>
         </div>
         <div id="sideNav">
                 <i onclick="openNav()" class="material-icons" class="material-icons" style="font-size:36px;color:white;">close</i>
@@ -39,6 +40,12 @@
                 <li><button type="button" onclick="setPenSize('increase')" class="button-pencil-size"><i class="material-icons" class="material-icons" style="font-size:15px;color:#FFFFFF;">arrow_upward</i></button></li>
             </ul>
                 
+        </div>
+        
+        <div id="dropdownMenu">
+            <button type="button" onclik="share()" class="button dropdown-button">Share</button>
+            <button type="button" onclick="aboutApp()" class="button dropdown-button">About</button>
+            <button type="button" onclick="sourcecodeLink()" class="button dropdown-button">Source code</button>
         </div>
         
         <canvas id="myCanvas" width="260" height="375">

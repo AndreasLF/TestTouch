@@ -3,11 +3,16 @@ var ctx;
 var lastPoint = null;
 var color = 'black';
 var sideNavOpen = false;
+var dropdownOpen = false;
 var penSize = 1;
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
     window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
+    // Start watching for shake gestures and call "onShake" 
+    // with a shake sensitivity of 40 (optional, default 30) 
+    shake.startWatch(onShake, 40 /*, onError */);
+    
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
@@ -75,6 +80,20 @@ function openNav() {
     }
 }
 
+function openMoreOptions() {
+    var dropdownElement = document.getElementById("dropdownMenu");
+    
+    if (dropdownOpen == false) {
+        dropdownElement.style.visibility = "visible";
+        dropdownOpen = true;
+    }
+    else {
+        dropdownElement.style.visibility = "hidden";
+        dropdownOpen = false;
+    }
+    
+}
+
 function getColor() {
     return {black:'#212121', grey:'#9e9e9e', red:'#f44336', blue:'#2196f3', yellow:'#ffeb3b', green:'#4caf50'};
 }
@@ -103,3 +122,8 @@ function setPenSize(n){
     
     document.getElementById("penSizeDiv").innerHTML=penSize;
 }
+
+
+var onShake = function () {//This is run when the device gets shaken. The plugin is added at config.xml
+    clearCanvas();
+};
