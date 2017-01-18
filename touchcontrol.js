@@ -9,9 +9,7 @@ var penSize = 1;
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
     window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
-    // Start watching for shake gestures and call "onShake" 
-    // with a shake sensitivity of 40 (optional, default 30) 
-    shake.startWatch(onShake, 40 /*, onError */);
+    
     
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
@@ -29,6 +27,9 @@ function canvasResize(){
 
 function onDeviceReady() { 
     vibrate(); //The function vibrate is called
+    // Start watching for shake gestures and call "onShake" 
+    // with a shake sensitivity of 40 (optional, default 30) 
+    shake.startWatch(onShake, 40 /*, onError */);
 }
 
 function vibrate() {
@@ -124,6 +125,7 @@ function setPenSize(n){
 }
 
 
-var onShake = function () {//This is run when the device gets shaken. The plugin is added at config.xml
+function onShake() {//This is run when the device gets shaken. The plugin is added in config.xml
     clearCanvas();
 };
+
