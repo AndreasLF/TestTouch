@@ -3,36 +3,37 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+    position:fixed;
 }
 
-#titleBar {
+#titleBar { /*this is the bar containing the menu and more options buttons*/
     height: 40px;
-    background-color: #0288D1;
+    background-color: #2196F3;
+    box-shadow: 0px 3px 17px -1px rgba(0,0,0,0.15); /*creates a shadow around the titleBar*/
 }
 
-#sideNav {
-    height: 100%; /* height is 100% */
-    width: 0; /* with is 0 as default. It later gets changed in javaScript*/
+#sideNav { /*Th*/
+    height: 100%;
+    width: 0; /*with is 0 as default. It later gets changed in javaScript*/
     position: fixed; /*Position is fixed. It stays in the same place */
-    z-index: 1; /* Sets the z-index to one, which makes it sit on top */
+    z-index: 1; /*z-index is 1, which makes it sit on top */
     top: 0; /*the distance from the top is 0*/
     left: 0; /*the distance from the left is 0*/
-    background-color: #2196F3; /*Background color is grey with an opacity of 0.5*/
+    background-color: #2196F3;
     overflow-x: hidden; /* This disables the horizontal scroll */
-    transition: 0.5s;  /*0.5 second transition effect to slide in the sidenav */
+    transition: 0.5s;  /*The transition on 0.5s makes the animation last half a second*/
+    box-shadow: 0px 3px 17px -1px rgba(0,0,0,0.15); /*creates a shadow around the sideNav*/
 }
 
-#dropdownMenu{
+#dropdownMenu{ /*styles the dropdown menu*/
     visibility: hidden; /*sets the visibility to hidden*/
-    background-color: #ffffff; /*sets the background color to white*/
+    background-color: #ffffff; 
     position: fixed; /*Position is fixed. It stays in the same place */
     z-index: 1; /* Sets the z-index to one, which makes it sit on top */
-    width: 100px;
+    width: 100px; 
     height: 0px;
-    right: 0;
+    right: 0;        
 }
-
-
 
 #menuButton {
     width:36px;
@@ -60,6 +61,11 @@ html, body {
     font-family: roboto; 
     text-transform: uppercase;
     border-radius: 10px;
+}
+
+.m-icons {
+    font-size:30px;
+    color:white;
 }
 
 .dropdown-button {
