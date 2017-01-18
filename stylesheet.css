@@ -23,8 +23,8 @@ html, body {
 }
 
 #dropdownMenu{
-    visibility: hidden;
-    background-color: #ffffff;
+    visibility: hidden; /*sets the visibility to hidden*/
+    background-color: #ffffff; /*sets the background color to white*/
     position: fixed; /*Position is fixed. It stays in the same place */
     z-index: 1; /* Sets the z-index to one, which makes it sit on top */
     width: 100px;

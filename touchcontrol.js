@@ -10,8 +10,6 @@ function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
     window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
     
-    
-    
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
