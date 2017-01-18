@@ -21,12 +21,14 @@
         <!--This is the titlebar which contains the menu and more options buttons-->
         <div id="titleBar">
             <!--Button which runs the function openNav() when clicked-->
-            <div  onclick="openNav()" id="menuButton"><i class="material-icons m-icons">menu</i></div>
+            <div  onclick="openNav()" id="menuButton"><i class="material-icons" style="font-size: 36px; color:white; padding: 10px;">menu</i></div>
+            <!--Button which -->
+            <div onclick="takePicture()" id="cameraButton"><i class="material-icons" style="font-size: 36px; color:white; padding: 10px;">camera</i></div>
             <!--Button which runs the openMoreOptions() whenn clicked-->
-            <div onclick="openMoreOptions()" id="moreOptions"><i class="material-icons m-icons">more_vert</i></div>
+            <div onclick="openMoreOptions()" id="moreOptions"><i class="material-icons" style="font-size: 36px; color:white; padding: 10px;">more_vert</i></div>
         </div>
         <div id="sideNav">
-                <i onclick="openNav()" class="material-icons m-icons">close</i>
+                <i onclick="openNav()" class="material-icons" style="font-size: 36px; color:white; padding: 10px;">close</i>
                 <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
                 <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
                 <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
@@ -59,6 +61,7 @@
         <canvas id="myCanvas">
             Canvas understøttes ikke af browseren. Prøv en anden browser.
         </canvas>
+        <img height="100%" width="100%"/>
     
     </body>
 </html>

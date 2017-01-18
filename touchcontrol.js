@@ -1,10 +1,9 @@
-var canvas;
-var ctx;
-var lastPoint = null;
-var color = 'black';
-var sideNavOpen = false;
-var dropdownOpen = false;
-var penSize = 1;
+var canvas, ctx; //stores canvas and context of the canvas
+var lastPoint = null; //stores the last point. Used for drawing
+var color = 'black'; //stores the drawing color
+var sideNavOpen = false; //stores information about whether or not the sideNav menu is open
+var dropdownOpen = false; //stores information about whether or not the sideNav menu is open
+var penSize = 1; //stores the pen size
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
@@ -15,22 +14,37 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    canvasResize();
+    canvasResize(); //calls the resizeCanvas() function
 }
 
 function canvasResize(){
-                canvas.width  = window.innerWidth;
-                canvas.height = window.innerHeight - getOffset(canvas).top;
+                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
+                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
 }
 
-function onDeviceReady() { 
+function onDeviceReady() { //this function is run, when the device is ready. This is needed to load the cordova plugins
     vibrate(); //The function vibrate is called
+    takePicture(); //takePicture() is called
 }
 
 function vibrate() {
     navigator.vibrate(1000); //Makes the phone vibrate for 1000 milliseconds
 }
  
+
+function takePicture() {
+navigator.camera.getPicture(onSuccess, onFail, {destinationType: Camera.DestinationType.FILE_URI }); //takes a picture and returns the fileURI to the onSuccess function
+}
+
+function onSuccess(imageURI) {
+    var image = document.getElementById('myImage'); //gets the image element
+    image.src = imageURI; //sets the image source to the imageURI of the taken image
+}
+
+function onFail(message) {
+    alert('Failed to launch camera app'); //alerts the user if the camera fails to launch
+}
+
 
 function touchMove(event) {
     var offsetTop = getOffset(canvas).top; //stores the offsetTop of the canvas
@@ -55,69 +69,70 @@ function touchMove(event) {
 }
 
 
-function touchEnd(event) {
+function touchEnd(event) { 
     event.preventDefault(); //preventDefault cancels an event
     lastPoint = null; //sets the lastPoint to null. This will prevent it from connecting the lines if a new line is drawn
 }
 
-function getOffset(element) {
+function getOffset(element) { //takes a html element as an input
     return {left: element.offsetLeft, top: element.offsetTop} //an object with the poperties for left and right offset is returned 
 }
 
 function openNav() {
     
-    if (sideNavOpen == false) {
-        document.getElementById("sideNav").style.width = "140px";
-        sideNavOpen = true;
+    if (sideNavOpen == false) { //If the sideNav menu is closed this code is run
+        document.getElementById("sideNav").style.width = "140px"; //opens the sideNav by changing the width
+        sideNavOpen = true; //sideNavOpen is now true
     }
-    else {
-        document.getElementById("sideNav").style.width = "0px";
-        sideNavOpen = false;
+    else { //
+        document.getElementById("sideNav").style.width = "0px"; //closes the sideNav by changing the width
+        sideNavOpen = false; //sideNavOpen is now false
     }
 }
 
 function openMoreOptions() {
-    var dropdownElement = document.getElementById("dropdownMenu");
+    var dropdownElement = document.getElementById("dropdownMenu"); //gets the dropdownMenu div
     
-    if (dropdownOpen == false) {
-        dropdownElement.style.visibility = "visible";
-        dropdownOpen = true;
+    if (dropdownOpen == false) { //if the dropdownMenu is closed the following code is run 
+        dropdownElement.style.visibility = "visible"; //The visibility og the menu is changed to visible
+        dropdownOpen = true; //dropdownOpen is now true
     }
     else {
-        dropdownElement.style.visibility = "hidden";
-        dropdownOpen = false;
+        dropdownElement.style.visibility = "hidden"; //The visibility og the menu is changed to hidden
+        dropdownOpen = false; //dropdownOpen is now false
     }
     
 }
 
-function getColor() {
-    return {black:'#212121', grey:'#9e9e9e', red:'#f44336', blue:'#2196f3', yellow:'#ffeb3b', green:'#4caf50'};
+function getColor() { //This gets a color
+    return {black:'#212121', grey:'#9e9e9e', red:'#f44336', blue:'#2196f3', yellow:'#ffeb3b', green:'#4caf50'}; //Returns an object with different colors as properties
 }
 
 function changeColor(c) {
     color = c; 
-    openNav();
+    openNav(); //calls openNav() to close the menu, when color is changed 
 }
 
 function clearCanvas() {
     
-    if (confirm("Are you sure") == true) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        vibrate();
+    if (confirm("Are you sure") == true) { //If the user confirms the following code is run
+        ctx.clearRect(0, 0, canvas.width, canvas.height); //Clears the canvas
+        vibrate(); //Phone vibrates
     } 
-    openNav();
+    openNav(); //calls openNav() to close the menu, when canvas i cleared
 }
 
 function setPenSize(n){
-    if (n == 'increase') {
-        penSize++;
+    if (n == 'increase') { //if the parameter is 'increase' the following code is run
+        penSize++; //increses the penSize
     }
-    else if (n == 'decrease') {
-        if(penSize>1) {penSize--};
+    else if (n == 'decrease') { //if the parameter is 'decrease' the following code is run 
+        if(penSize>1) {penSize--}; //decreases the penSize if it is bigger than 1
     }
     
-    document.getElementById("penSizeDiv").innerHTML=penSize;
+    document.getElementById("penSizeDiv").innerHTML=penSize; //changes the penSize div
 }
+
 
 
 
