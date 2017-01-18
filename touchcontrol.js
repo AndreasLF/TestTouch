@@ -32,6 +32,11 @@ function onDeviceReady() {
     shake.startWatch(onShake, 40 /*, onError */);
 }
 
+function onShake() {//This is run when the device gets shaken. The plugin is added in config.xml
+    clearCanvas();
+};
+
+
 function vibrate() {
     navigator.vibrate(1000); //Makes the phone vibrate for 1000 milliseconds
 }
@@ -125,7 +130,4 @@ function setPenSize(n){
 }
 
 
-function onShake() {//This is run when the device gets shaken. The plugin is added in config.xml
-    clearCanvas();
-};
 
