@@ -17,7 +17,6 @@
 
     
 	<preference name="DisallowOverscroll" value="true" />
-    <plugin name="cordova-plugin-shake"/>
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1" />

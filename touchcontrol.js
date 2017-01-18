@@ -27,15 +27,7 @@ function canvasResize(){
 
 function onDeviceReady() { 
     vibrate(); //The function vibrate is called
-    // Start watching for shake gestures and call "onShake" 
-    // with a shake sensitivity of 40 (optional, default 30) 
-    shake.startWatch(onShake, 40 /*, onError */);
 }
-
-function onShake() {//This is run when the device gets shaken. The plugin is added in config.xml
-    clearCanvas();
-};
-
 
 function vibrate() {
     navigator.vibrate(1000); //Makes the phone vibrate for 1000 milliseconds
