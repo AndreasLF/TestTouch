@@ -7,7 +7,7 @@ var penSize = 1; //stores the pen size
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
-    window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
+//    window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
@@ -16,7 +16,7 @@ function initialize(){
     
 //    canvasResize(); //calls the resizeCanvas() function
 }
-
+//
 //function canvasResize(){
 //                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
 //                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
