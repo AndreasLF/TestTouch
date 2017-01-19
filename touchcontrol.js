@@ -33,13 +33,19 @@ function vibrate() {
  
 
 function takePicture() {
-    navigator.camera.getPicture(onSuccess, onFail, {destinationType: Camera.DestinationType.FILE_URI }); //takes a picture and returns the fileURI to the onSuccess function
+    var options = {
+    quality: 50, destinationType: Camera.DestinationType.DATA_URL, encodingType: Camera.EncodingType.JPEG, targetWidth: window.innerWidth, targetHeight: window.innerHeight, correctOrientation: true};
+    
+    navigator.camera.getPicture(onSuccess, onFail, options); //takes a picture and returns the fileURI to the onSuccess function
 }
 
 function onSuccess(imageURI) {
     
-    canvas.style.background = "url(data:image/jpg;base64," + imageURI + ")";
-    canvas.style.backgroundSize = "100% 100%"; 
+    var image = new Image();
+    image.src = "data:image/jpeg;base64," + imageData;
+    image.onload = function() {
+    ctx.drawImage(image, 0, 0);
+  };
 }
 
 function onFail(message) {
