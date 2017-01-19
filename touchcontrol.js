@@ -4,6 +4,7 @@ var color = 'black'; //stores the drawing color
 var sideNavOpen = false; //stores information about whether or not the sideNav menu is open
 var dropdownOpen = false; //stores information about whether or not the sideNav menu is open
 var penSize = 1; //stores the pen size
+var image; //stores the canvas background image
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
@@ -40,9 +41,10 @@ function takePicture() {
 
 function onSuccess(imageURI) {
     
-    var image = document.getElementById('myImage');
-    image.src = imageURI;
-    image.onload = function() {cxt.drawImage(image, 100, 100);};
+    var img = new Image();
+    img.src = imageURI;
+    ctx.drawImage(img, 0, 0);    
+    ctx.fillRect(0,0,0,0);
 }
 
 function onFail(message) {
