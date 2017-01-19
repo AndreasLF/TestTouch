@@ -33,23 +33,20 @@ function vibrate() {
  
 
 function takePicture() {
-    var options = {
-    quality: 50, destinationType: Camera.DestinationType.DATA_URL, encodingType: Camera.EncodingType.JPEG, targetWidth: window.innerWidth, targetHeight: window.innerHeight, correctOrientation: true};
+    var options = {quality: 50, destinationType: Camera.DestinationType.FILE_URI, encodingType: Camera.EncodingType.JPEG, targetWidth: window.innerWidth, targetHeight: window.innerHeight, correctOrientation: true}; //creates an object named options containing properties for the image options. 
     
     navigator.camera.getPicture(onSuccess, onFail, options); //takes a picture and returns the fileURI to the onSuccess function
 }
 
 function onSuccess(imageURI) {
     
-    var image = new Image();
-    image.src = "data:image/jpeg;base64," + imageURI;
-    image.onload = function() {
-    ctx.drawImage(image, 0, 0);
-  };
+    var image = document.getElementById('myImage');
+    image.src = imageURI;
+    image.onload = function() {cxt.drawImage(image, 100, 100);}
 }
 
 function onFail(message) {
-    alert('Failed to launch camera app'); //alerts the user if the camera fails to launch
+    alert(message); //alerts the user if the camera fails to launch
 }
 
 
