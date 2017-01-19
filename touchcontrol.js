@@ -42,7 +42,7 @@ function takePicture() {
 function onSuccess(imageURI) {
     
     var image = new Image();
-    image.src = "data:image/jpeg;base64," + imageData;
+    image.src = "data:image/jpeg;base64," + imageURI;
     image.onload = function() {
     ctx.drawImage(image, 0, 0);
   };
