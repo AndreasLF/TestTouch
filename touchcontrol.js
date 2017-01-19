@@ -49,6 +49,7 @@ function onSuccess(imageURI) {
     img.src = imageURI;
     ctx.drawImage(img, 0, 0);    
     ctx.fillRect(0,0,0,0);
+    document.getElementById("titleBar").innerHTML = imageURI;
 }
 
 function onFail(message) {
