@@ -14,7 +14,7 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    canvasResize(); //calls the resizeCanvas() function
+    canvasResize(); //calls the resizeCanvas() function   
 }
 
 function canvasResize(){
@@ -33,12 +33,12 @@ function vibrate() {
  
 
 function takePicture() {
-navigator.camera.getPicture(onSuccess, onFail, {destinationType: Camera.DestinationType.FILE_URI }); //takes a picture and returns the fileURI to the onSuccess function
+    navigator.camera.getPicture(onSuccess, onFail, {destinationType: Camera.DestinationType.FILE_URI }); //takes a picture and returns the fileURI to the onSuccess function
 }
 
 function onSuccess(imageURI) {
-    var image = document.getElementById('myImage'); //gets the image element
-    image.src = imageURI; //sets the image source to the imageURI of the taken image
+    canvas.style.background = imageURI;
+    canvas.style.backgroundSize = "100% 100%"; 
 }
 
 function onFail(message) {

@@ -6,6 +6,7 @@ html, body {
     position:fixed;
 }
 
+
 #titleBar { /*this is the bar containing the menu and more options buttons*/
     height: 60px;
     background-color: #2196F3;
@@ -16,7 +17,7 @@ html, body {
     height: 100%;
     width: 0; /*with is 0 as default. It later gets changed in javaScript*/
     position: fixed; /*Position is fixed. It stays in the same place */
-    z-index: 1; /*z-index is 1, which makes it sit on top */
+    z-index: 1; /*z-index is 3, which makes it sit on top */
     top: 0; /*the distance from the top is 0*/
     left: 0; /*the distance from the left is 0*/
     background-color: #2196F3;
