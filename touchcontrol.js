@@ -4,8 +4,6 @@ var color = 'black'; //stores the drawing color
 var sideNavOpen = false; //stores information about whether or not the sideNav menu is open
 var dropdownOpen = false; //stores information about whether or not the sideNav menu is open
 var penSize = 1; //stores the pen size
-var image; //stores the canvas background image
-var canvasResized = 0;
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
@@ -16,16 +14,13 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    if (canvasResized==0) {
-        canvasResize(); //calls the resizeCanvas() function 
-        canvasResized = 1;
-    }
+//    canvasResize(); //calls the resizeCanvas() function
 }
 
-function canvasResize(){
-                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
-                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
-}
+//function canvasResize(){
+//                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
+//                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
+//}
 
 function onDeviceReady() { //this function is run, when the device is ready. This is needed to load the cordova plugins
     vibrate(); //The function vibrate is called
@@ -49,7 +44,6 @@ function onSuccess(imageURI) {
     img.src = imageURI;
     ctx.drawImage(img, 0, 0);    
     ctx.fillRect(0,0,0,0);
-    document.getElementById("titleBar").innerHTML = imageURI;
 }
 
 function onFail(message) {
