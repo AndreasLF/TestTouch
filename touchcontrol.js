@@ -14,7 +14,7 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    canvasResize(); //calls the resizeCanvas() function  
+    canvasResize(); //calls the resizeCanvas() function 
 }
 
 function canvasResize(){
@@ -42,7 +42,7 @@ function onSuccess(imageURI) {
     
     var image = document.getElementById('myImage');
     image.src = imageURI;
-    image.onload = function() {cxt.drawImage(image, 100, 100);}
+    image.onload = function() {cxt.drawImage(image, 100, 100);};
 }
 
 function onFail(message) {
