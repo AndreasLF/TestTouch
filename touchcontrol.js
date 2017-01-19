@@ -14,7 +14,7 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    canvasResize(); //calls the resizeCanvas() function   
+    canvasResize(); //calls the resizeCanvas() function  
 }
 
 function canvasResize(){
@@ -37,7 +37,8 @@ function takePicture() {
 }
 
 function onSuccess(imageURI) {
-    canvas.style.background = imageURI;
+    
+    canvas.style.background = "url(data:image/jpg;base64," + imageURI + ")";
     canvas.style.backgroundSize = "100% 100%"; 
 }
 
