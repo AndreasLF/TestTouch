@@ -5,6 +5,7 @@ var sideNavOpen = false; //stores information about whether or not the sideNav m
 var dropdownOpen = false; //stores information about whether or not the sideNav menu is open
 var penSize = 1; //stores the pen size
 var image; //stores the canvas background image
+var canvasResized = 0;
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
@@ -15,7 +16,10 @@ function initialize(){
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-    canvasResize(); //calls the resizeCanvas() function 
+    if (canvasResized==0) {
+        canvasResize(); //calls the resizeCanvas() function 
+        canvasResized = 1;
+    }
 }
 
 function canvasResize(){
