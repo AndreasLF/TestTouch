@@ -146,5 +146,18 @@ function setPenSize(n){
 }
 
 
+function share() {
+    alert("You can share this link, which provides an apk to be installed right on your phone https://build.phonegap.com/apps/2444680/download/android/?qr_key=9FSJne92p7Pwat3ejMBe");
+}
+
+function aboutApp() {
+    alert("Drawing <br> Andreas Fiehn <br> Version 2.0 <br>");
+}
+
+function sourcecodeLink() {
+    window.open("https://github.com/AndreasLF/TestTouch/");
+}
+
+
 
 
