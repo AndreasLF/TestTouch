@@ -57,7 +57,7 @@ html, body {
     position: fixed;
 }
 
-.button{
+.button{ /*styles the buttons*/
     color: white;
     border:none;
     padding: 8px 16px;
@@ -71,6 +71,7 @@ html, body {
     text-transform: uppercase;
     border-radius: 10px;
     background-color: #607D8B;
+    box-shadow: 0px 3px 17px -1px rgba(0,0,0,0.15); /*creates a shadow around the buttons*/
 }
 
 .dropdown-button {

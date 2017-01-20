@@ -27,19 +27,18 @@
             <!--Button which runs the openMoreOptions() whenn clicked-->
             <div onclick="openMoreOptions()" id="moreOptions"><i class="material-icons" style="font-size: 36px; color:white; padding: 10px;">more_vert</i></div>
         </div>
+        
+        <!--SideNav which contains color and penSize menu-->
         <div id="sideNav">
-                <i onclick="openNav()" class="material-icons" style="font-size: 36px; color:white; padding: 10px;">close</i>
-                <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
-                <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
-                <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>
-                <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
-                <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
-                <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>  
+            <i onclick="openNav()" class="material-icons" style="font-size: 36px; color:white; padding: 10px;">close</i>
+            <button type="button" onclick="changeColor(getColor().black)" class="button" id="button-black">black</button>
+            <button type="button" onclick="changeColor(getColor().grey)" class="button" id="button-grey">grey</button>
+            <button type="button" onclick="changeColor(getColor().red)" class="button" id="button-red">red</button>               <button type="button" onclick="changeColor(getColor().blue)" class="button" id="button-blue">blue</button>
+            <button type="button" onclick="changeColor(getColor().yellow)" class="button" id="button-yellow">yellow</button>
+            <button type="button" onclick="changeColor(getColor().green)" class="button" id="button-green">green</button>  
                 
-                <br>
-                <div class="pen-size-div">Pen width</div>
-                
-            
+            <br>
+            <div class="pen-size-div">Pen width</div>
             <ul id="penSizeList">
                 <li><button type="button" onclick="setPenSize('decrease')" class="button-pencil-size"><i class="material-icons" class="material-icons" style="font-size:15px;color:#FFFFFF;">arrow_downward</i></button></li>
                 <li><div id="penSizeDiv" class="pen-size-div">1</div></li>
@@ -47,11 +46,10 @@
             </ul>
             
             <br><br>
-            <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>
-
-                
+            <button type="button" onclick="clearCanvas()" class="button" id="button-clear">clear</button>     
         </div>
         
+        <!--Dropdown menu which contains extra information and links-->
         <div id="dropdownMenu">
             <button type="button" onclik="share()" class="button dropdown-button">Share</button>
             <button type="button" onclick="aboutApp()" class="button dropdown-button">About</button>
@@ -60,8 +58,7 @@
         
         <canvas id="myCanvas">
             Canvas understøttes ikke af browseren. Prøv en anden browser.
-        </canvas>
-        
+        </canvas>      
     
     </body>
 </html>

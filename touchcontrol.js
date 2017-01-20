@@ -13,6 +13,8 @@ function initialize(){
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
+    canvas2 = document.getElementById("myCanvas2");
+    ctx2 = canvas2.getContext("2d");
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
@@ -27,6 +29,7 @@ function initialize(){
 function canvasResize(){
                 canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
                 canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
+                context.clearRect(0,0,canvas.width,canvas.height);
 }
 
 function onDeviceReady() { //this function is run, when the device is ready. This is needed to load the cordova plugins
@@ -46,10 +49,10 @@ function takePicture() {
 }
 
 function onSuccess(imageURI) {
-    img.src = imageURI;
-    console.log("imageURI: " + imageURI);
-    pictureTaken = true;
-    initialize();
+    img.src = imageURI; //Changes the image source to the imageURI
+    console.log("imageURI: " + imageURI); //prints the uri for debugging
+    pictureTaken = true; //changes picture taken to true
+    initialize(); //runs the initialize
     
 }
 
@@ -147,15 +150,15 @@ function setPenSize(n){
 
 
 function share() {
-    alert("You can share this link, which provides an apk to be installed right on your phone https://build.phonegap.com/apps/2444680/download/android/?qr_key=9FSJne92p7Pwat3ejMBe");
+    alert("Share app")
 }
 
 function aboutApp() {
-    alert("Drawing <br> Andreas Fiehn <br> Version 2.0 <br>");
+    alert("Drawing, Andreas Fiehn, Version 2.0");
 }
 
 function sourcecodeLink() {
-    window.open("https://github.com/AndreasLF/TestTouch/");
+    window.open("https://github.com/AndreasLF/TestTouch/"); //Opens the github link for the source code
 }
 
 
