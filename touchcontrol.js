@@ -13,8 +13,6 @@ function initialize(){
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
-    canvas2 = document.getElementById("myCanvas2");
-    ctx2 = canvas2.getContext("2d");
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
@@ -29,7 +27,7 @@ function initialize(){
 function canvasResize(){
                 canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
                 canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
-                context.clearRect(0,0,canvas.width,canvas.height);
+                ctx.clearRect(0,0,canvas.width,canvas.height); //clears the canvas
 }
 
 function onDeviceReady() { //this function is run, when the device is ready. This is needed to load the cordova plugins
@@ -150,7 +148,7 @@ function setPenSize(n){
 
 
 function share() {
-    alert("Share app")
+    alert("Share app");
 }
 
 function aboutApp() {
