@@ -47,6 +47,7 @@ function takePicture() {
 
 function onSuccess(imageURI) {
     img.src = imageURI;
+    console.log("imageURI: " + imageURI);
     pictureTaken = true;
     initialize();
     
