@@ -4,23 +4,30 @@ var color = 'black'; //stores the drawing color
 var sideNavOpen = false; //stores information about whether or not the sideNav menu is open
 var dropdownOpen = false; //stores information about whether or not the sideNav menu is open
 var penSize = 1; //stores the pen size
+var img = new Image(); //stores the background image for the canvas
+var pictureTaken = false; //stores information about whether or not a picture was taken
 
 function initialize(){
     addEventListener("deviceready", onDeviceReady, false); //When the device is ready the onDEviceReady function runs 
-//    window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
+    window.addEventListener("resize", canvasResize, false); //When window resizes canvasResize() runs
     
     canvas = document.getElementById("myCanvas"); //Gets the canvas element and stores it in the global variable "canvas"
     ctx = canvas.getContext("2d"); //Stores the 2d context of the canvas in the global variable "ctx"
     canvas.addEventListener("touchmove", touchMove, false); //When the finger is moving on the screen, touchMove() runs 
     canvas.addEventListener("touchend", touchEnd, false); //When the figner is released from the screen, touchEnd() runs
     
-//    canvasResize(); //calls the resizeCanvas() function
+    canvasResize(); //calls the resizeCanvas() function
+    
+    if(pictureTaken == true) {
+        ctx.drawImage(img, 0, 0);    
+        ctx.fillRect(0,0,0,0);
+    }
 }
-//
-//function canvasResize(){
-//                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
-//                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
-//}
+
+function canvasResize(){
+                canvas.width  = window.innerWidth; //sets canvas width to window.innerWidth
+                canvas.height = window.innerHeight - getOffset(canvas).top; //sets the canvas height to the window.innerHeight - the offset
+}
 
 function onDeviceReady() { //this function is run, when the device is ready. This is needed to load the cordova plugins
     vibrate(); //The function vibrate is called
@@ -39,11 +46,10 @@ function takePicture() {
 }
 
 function onSuccess(imageURI) {
-    
-    var img = new Image();
     img.src = imageURI;
-    ctx.drawImage(img, 0, 0);    
-    ctx.fillRect(0,0,0,0);
+    pictureTaken = true;
+    initialize();
+    
 }
 
 function onFail(message) {
